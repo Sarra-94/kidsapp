@@ -9,9 +9,8 @@ const reducer = (state = initialState, action) => {
   switch (type) {
     case GET_EDUCATION_VIDEOS:
       return {
-        educationVideos: payload,
+        educationVideos: payload
       };
-  
     default:
       return state;
   }

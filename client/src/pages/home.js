@@ -1,7 +1,6 @@
 import React from "react";
 import "./home.css";
 import { Link } from "react-router-dom";
-import Footer from "../components/footer";
 import logo from "../assets/home/logo.png";
 import home from "../assets/home/home.jpg"
 import homeback1 from "../assets/home/homeback1.jpeg"
@@ -223,7 +222,6 @@ function App() {
           <span className="border">COOL!</span>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

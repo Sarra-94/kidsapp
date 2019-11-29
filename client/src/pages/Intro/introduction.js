@@ -1,14 +1,13 @@
 import React from "react";
-import "./home.css";
+import "./introduction.css";
 import { Link } from "react-router-dom";
-import logo from "../assets/home/logo.png";
-import home from "../assets/home/home.jpg"
-import homeback1 from "../assets/home/homeback1.jpeg"
-import homecarousel1 from "../assets/home/homecarousel1.jpeg"
-import homeplaying from "../assets/home/homeplaying.jpg"
-import homereading from "../assets/home/homereading.jpg"
-import homereading2 from "../assets/home/homereading2.jpg"
-
+import logo from "../../assets/home/logo.png";
+import homeback1 from "../../assets/home/homeback1.jpeg";
+import homecarousel1 from "../../assets/home/homecarousel1.jpeg";
+import homeplaying from "../../assets/home/homeplaying.jpg";
+import homereading from "../../assets/home/homereading.jpg";
+import homereading2 from "../../assets/home/homereading2.jpg";
+import ABC from "../../assets/intro/ABC.png"
 
 function App() {
   return (
@@ -21,20 +20,8 @@ function App() {
             width="135px"
             height="115px"
             className="mt-2 ml-2"
-            
           />
           <div className="m-2">
-          <button
-              className="btn btn-outline-primary m-3 p-3"
-              style={{ width: "120px" }}
-            >
-              <Link
-                to="/aboutUs"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-           AboutUs
-              </Link>
-            </button>
             <button
               className="btn btn-outline-primary m-3 p-3"
               style={{ width: "120px" }}
@@ -43,7 +30,7 @@ function App() {
                 to="/signup"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                SIGN UP
+                Inscription
               </Link>
             </button>
             <button
@@ -54,16 +41,23 @@ function App() {
                 to="/signin"
                 style={{ textDecoration: "none", color: "white" }}
               >
-                SIGN IN
+             Connexion
               </Link>
             </button>
           </div>
+          <div className="caption"  
+            style={{
+              backgroundColor: "transparent",
+              fontSize: "25px",
+              fontWeight: "Bold",
+              textShadow:
+                "1px 1px 2px black, 0 0 250px #b67338, 0 0 5px darkblue",
+              color: "white"
+            }}>
+          <span className="border"> {"Vos enfants sur Internet en toute sécurité".toUpperCase()}</span>
         </div>
-        <div className="caption">
-          <span className="border">
-            K<span className="logo">I</span> D <span className="logo">S</span>
-          </span>
         </div>
+       
       </div>
 
       <div
@@ -79,25 +73,31 @@ function App() {
             textAlign: "center",
             fontWeight: "Bold",
             textShadow: "1px 1px 2px black, 0 0 10px #b67338, 0 0 5px darkblue",
-            color: "white"
-            // color: "#b67338"
+            color: "white",
+            margin:'1% 10%'
           }}
         >
-          Best of the Best of our Recipes
+          Notre vision est d'etre la source pour l'apprentissage des enfants sur internet
         </h3>
         <div className="d-flex justify-content-center flex-wrap">
           <figure className="snip1307">
-            <img
-           src={home}
-              alt="sample52"
-            />
-            <img
-              src={homeback1}
-              alt="sample52"
-            />
+            <img src={homeplaying} alt="sample52" />
+            <img src={homeback1} alt="sample52" />
             <figcaption>
-              <h3>
-                Hanson<span> Deck</span>
+              <h3 style={{ fontWeight:'bold', color:'#ffffff'}}>
+                Education
+              </h3>
+              <p>
+              les enfants apprennent en jouant. Ne s'ennuient jamais
+              </p>
+            </figcaption>
+          </figure>
+          <figure className="snip1307">
+            <img src={homecarousel1} alt="sample52" />
+            <img src={homeplaying} alt="sample52" />
+            <figcaption>
+              <h3 style={{ fontWeight:'bold', color:'#ffffff'}}>
+                S'amuser
               </h3>
               <p>
                 If we wanted more leisure, we'd invent machines that do things
@@ -106,42 +106,18 @@ function App() {
             </figcaption>
           </figure>
           <figure className="snip1307">
-            <img
-              src={homecarousel1}
-              alt="sample52"
-            />
-            <img
-              src={homeplaying}
-              alt="sample52"
-            />
+            <img src={homereading} alt="sample52" />
             <figcaption>
-              <h3>
-                Hanson<span> Deck</span>
+              <h3 style={{ fontWeight:'bold', color:'#ffffff'}}>
+                Lire un Livre
               </h3>
               <p>
-                If we wanted more leisure, we'd invent machines that do things
-                less efficiently.
+                Un livre est un ami qui nous parle tout bas.
               </p>
             </figcaption>
-          </figure>
-          <figure className="snip1307">
-            <img
-              src={homereading}
-              alt="sample52"
-            />
-            <img
-              src={homereading2}
-              alt="sample52"
-            />
-            <figcaption>
-              <h3>
-                Hanson<span> Deck</span>
-              </h3>
-              <p>
-                If we wanted more leisure, we'd invent machines that do things
-                less efficiently.
-              </p>
-            </figcaption>
+            <img src={homereading2} alt="sample52" />
+         
+
           </figure>
         </div>
       </div>
@@ -159,7 +135,7 @@ function App() {
               color: "white"
             }}
           >
-            {"The news just out of the oven".toUpperCase()}
+            {"Learn & Learn".toUpperCase()}
           </span>
         </div>
       </div>
@@ -176,8 +152,9 @@ function App() {
           <div className="d-flex justify-content-center flex-wrap">
             <figure className="snip1563">
               <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample110.jpg"
+                src= {homereading}
                 alt="sample110"
+                style={{ width:'100%', height:'100%'}}
               />
               <figcaption>
                 <h3>Samuel Serif</h3>
@@ -209,7 +186,7 @@ function App() {
                 <h3>Fletch Skinner</h3>
                 <p>
                   But Calvin is no kind and loving god! He's one of the old
-                  gods! He demands sacrifice!{" "}
+                  gods! He demands sacrifice!
                 </p>
               </figcaption>
             </figure>
@@ -218,9 +195,7 @@ function App() {
       </div>
 
       <div className="bgimg-1">
-        <div className="caption">
-          <span className="border">COOL!</span>
-        </div>
+     
       </div>
     </div>
   );

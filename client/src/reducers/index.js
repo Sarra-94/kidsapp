@@ -1,7 +1,7 @@
-import { GET_EDUCATION_VIDEOS} from "../actions/types";
+import { GET_EDUCATION_VIDEOS, GET_EDUCATION_GAMES } from "../actions/types";
 const initialState = {
   educationVideos: [],
- 
+  educationGames: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -10,6 +10,10 @@ const reducer = (state = initialState, action) => {
     case GET_EDUCATION_VIDEOS:
       return {
         educationVideos: payload
+      };
+    case GET_EDUCATION_GAMES:
+      return {
+        educationGames: payload
       };
     default:
       return state;

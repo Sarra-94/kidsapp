@@ -2,7 +2,6 @@ const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
 
-
 // body-parser
 app.use(express.json());
 
@@ -15,7 +14,8 @@ mongoose
   .catch(err => console.log(err));
 
 //API route
-app.use("/educationvideos", require("./router/educationVideos"));
+app.use("/video", require("./router/educationVideos"));
+app.use("/educationgames", require("./router/educationGames"));
 
 //run server
 const port = process.env.PORT || 5000;

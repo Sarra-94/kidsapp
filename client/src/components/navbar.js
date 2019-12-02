@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import parent from "../assets/intro/parent.svg";
+import child from "../assets/intro/child.svg";
+
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +13,7 @@ class Navbar extends Component {
       <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
           <Link to="/" style={{ textDecoration: "none", color: "white" }}>
-            <button  className="btn btn-outline-primary m-3 p-3" href="#">
+            <button className="btn btn-outline-primary m-3 p-3" href="#">
               Home
             </button>
           </Link>
@@ -51,9 +54,7 @@ class Navbar extends Component {
                     to="/edGames"
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    <button class="dropdown-item" href="#">
-                      Games Education
-                    </button>
+                    <button class="dropdown-item">Games Education</button>
                   </Link>
                 </div>
               </li>
@@ -70,12 +71,18 @@ class Navbar extends Component {
                   Entertaiment
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">
-                    Watch Movie
-                  </a>
-                  <a class="dropdown-item" href="#">
-                    Play Games
-                  </a>
+                  <Link
+                    to="/movies"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button class="dropdown-item">Watch movie</button>
+                  </Link>
+                  <Link
+                    to="/game"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button class="dropdown-item">Play games</button>
+                  </Link>
                 </div>
               </li>
               <li class="nav-item dropdown">
@@ -90,20 +97,76 @@ class Navbar extends Component {
                 >
                   Books
                 </a>
+
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">
-                    Read Books
-                  </a>
+                  <Link to="/readingbooks">
+                    <button class="dropdown-item">Read Books</button>
+                  </Link>
+
                   <a class="dropdown-item" href="#">
                     Listen to Books
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">
-                    Picture Books
                   </a>
                 </div>
               </li>
             </ul>
+          </div>
+
+          <div class="form-inline my-2 my-lg-0">
+            <div className="authentification">
+              <div className="parentsection">
+                <img class="parent" src={parent} style={{ width: "30px" }} />
+                <span>xxxx yyyy</span>
+                <div class="dropdown">
+                  <a
+                    class="btn btn-secondary dropdown-toggle"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  ></a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">
+                      Setting
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Premium
+                    </a>
+                    <a class="dropdown-item" href="#">
+                      Log out
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className="parentsection child">
+                <img class="child" src={child} style={{ width: "40px" }} />
+                <span>Enfant </span>
+                <div class="dropdown">
+                  <a
+                    class="btn btn-secondary dropdown-toggle"
+                    href="#"
+                    role="button"
+                    id="dropdownMenuLink"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  ></a>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="#">
+                      Enfant 1
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <button type="button" class="btn btn-labeled btn-default">
+                  <span>
+                    <i class="fad fa-user-plus"></i> Ajouter
+                  </span>
+                </button>
+              </div>
+            </div>
           </div>
         </nav>
       </div>

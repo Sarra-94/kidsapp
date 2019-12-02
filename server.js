@@ -16,6 +16,8 @@ mongoose
 //API route
 app.use("/video", require("./router/educationVideos"));
 app.use("/educationgames", require("./router/educationGames"));
+app.use("/readingbooks", require("./router/readingBooks"));
+app.use("/movie", require("./router/movie"));
 
 //run server
 const port = process.env.PORT || 5000;

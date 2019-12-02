@@ -10,9 +10,9 @@ const Cardgame = props => {
     class="d-inline p-2 bg-primary text-white"
       hoverable
       style={{ width: "20%", height: "80%", margin: "2%" }}
-      cover={<img alt="example" style={{ height: "50%" }} src={card.image} />}
+      cover={<img alt="example"  src={card.image} />}
     >
-      <Meta title={card.title} description={card.title} />
+      <Meta title={card.title} description='Pour jouer Appuez sur le bouton si dessous' />
       <a href={card.url} >
         <img
           src="https://files.adventistas.org/noticias/pt/2017/04/11160045/Google_Play_logo.png"

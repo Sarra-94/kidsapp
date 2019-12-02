@@ -100,7 +100,7 @@ function App() {
                 S'amuser
               </h3>
               <p>
-                If we wanted more leisure, we'd invent machines that do things
+                If we wanted more leisure, we'd 
                 less efficiently.
               </p>
             </figcaption>

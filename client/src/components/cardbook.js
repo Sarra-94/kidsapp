@@ -2,9 +2,10 @@ import React from "react";
 import { Card } from "antd";
 import { Link } from "react-router-dom";
 
-const Cardcomp = props => {
+const Cardbook = props => {
   const { card } = props;
   const { Meta } = Card;
+  console.log(card._id);
   return (
     <Card
       className="card"
@@ -12,11 +13,11 @@ const Cardcomp = props => {
       style={{ width: "20%", margin: "2%" }}
       cover={<img alt="example" src={card.image} />}
     >
-      <Meta title={card.title} description='Pour voir le Video Appuez sur le bouton si dessous' />
+      <Meta title={card.title} description='To read that book Press the button' />
       <div className="buttonscard" >
         <Link
           to={{
-            pathname: `/${card.title}`,
+            pathname: `/readingbooks/${card.title}`,
             url: card.url,
             title: card.title
           }}
@@ -25,13 +26,13 @@ const Cardcomp = props => {
             style={{ marginTop: "5%", alignContent: "start" }}
             class="btn btn-outline-primary"
           >
-            WATCH MOVIE
+            Read Story
           </button>
         </Link>
-        <span  class="glyphicon glyphicon-heart" style={{color:'red'}}></span>
+        <span  class="glyphicon glyphicon-heart"></span>
       </div>
     </Card>
   );
 };
 
-export default Cardcomp;
+export default Cardbook;

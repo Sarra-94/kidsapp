@@ -6,13 +6,14 @@ import "./readingbooks.css";
 
 class Readingbooks extends Component {
   componentDidMount() {
-    this.props.getreadingbooks();
+    this.props.getreadingbooks()
+    console.log('is running')
   }
   render() {
     console.log(this.props.readingbooks);
     return (
       <div className="cards">
-        {this.props.readingbooks.map(el => (
+        {this.props.readingbooks&&this.props.readingbooks.map(el => (
           <Cardbook card={el}></Cardbook>
         ))}
       </div>

@@ -71,11 +71,11 @@ class Navbar extends Component {
                   Entertaiment
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link
-                    to="/movies"
+                 <Link
+                    to="/movie"
                     style={{ textDecoration: "none", color: "white" }}
                   >
-                    <button class="dropdown-item">Watch movie</button>
+                    <button class="dropdown-item">watch movie</button>
                   </Link>
                   <Link
                     to="/game"
@@ -99,15 +99,21 @@ class Navbar extends Component {
                 </a>
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <Link to="/readingbooks">
+                  <Link
+                    to="/readingbooks"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
                     <button class="dropdown-item">Read Books</button>
                   </Link>
-
-                  <a class="dropdown-item" href="#">
-                    Listen to Books
-                  </a>
+               <Link
+                    to="/listen"
+                    style={{ textDecoration: "none", color: "white" }}
+                  >
+                    <button class="dropdown-item">Listen book</button>
+                  </Link>
                 </div>
               </li>
+           
             </ul>
           </div>
 

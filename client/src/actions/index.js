@@ -1,5 +1,11 @@
-import { GET_EDUCATION_VIDEOS ,GET_EDUCATION_GAMES,GET_READING_BOOKS,GET_MOVIE} from "./types";
-import axios from 'axios'
+import {
+  GET_EDUCATION_VIDEOS,
+  GET_EDUCATION_GAMES,
+  GET_READING_BOOKS,
+  GET_MOVIE,
+  GET_LISTEN_BOOKS
+} from "./types";
+import axios from "axios";
 
 export const geteducationVideos = () => dispatch => {
   axios
@@ -23,5 +29,11 @@ export const getMovie = () => dispatch => {
   axios
     .get("/movie")
     .then(res => dispatch({ type: GET_MOVIE, payload: res.data }))
+    .catch(err => console.log(err));
+};
+export const getlistengbooks = () => dispatch => {
+  axios
+    .get("/listningbooks")
+    .then(res => dispatch({ type: GET_LISTEN_BOOKS, payload: res.data }))
     .catch(err => console.log(err));
 };

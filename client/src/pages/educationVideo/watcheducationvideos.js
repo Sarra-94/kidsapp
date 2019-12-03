@@ -12,3 +12,4 @@ const WatchMovie = props => {
 };
 
 export default WatchMovie;
+

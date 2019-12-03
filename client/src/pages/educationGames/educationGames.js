@@ -14,7 +14,7 @@ class EducationGames extends Component {
   render() {
     return (
       <div className="cardsGames">
-        {this.props.educationGames.map(el => (
+        {this.props.educationGames && this.props.educationGames.map(el => (
           <Cardgame key={el._id} card={el}></Cardgame>
         ))}
       </div>

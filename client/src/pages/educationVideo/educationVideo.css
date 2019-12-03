@@ -19,3 +19,7 @@
   align-items: center;
   margin: 5%;
 }
+.pageeducation{
+  display: flex;
+  flex-direction: column;
+}

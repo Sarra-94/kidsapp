@@ -13,7 +13,7 @@ class Movie extends Component {
   render() {
     return (
       <div className="cards">
-        {this.props.movie.map(el => (
+        {this.props.movie&&this.props.movie.map(el => (
           <Cardcomp key={el._id} card={el}></Cardcomp>
         ))}
       </div>

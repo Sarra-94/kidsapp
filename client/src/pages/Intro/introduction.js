@@ -8,6 +8,9 @@ import homeplaying from "../../assets/home/homeplaying.jpg";
 import homereading from "../../assets/home/homereading.jpg";
 import homereading2 from "../../assets/home/homereading2.jpg";
 import ABC from "../../assets/intro/ABC.png"
+import Signin from '../../components/signin.js'
+import Signup from '../../components/signup.js'
+
 
 function App() {
   return (
@@ -21,29 +24,12 @@ function App() {
             height="115px"
             className="mt-2 ml-2"
           />
-          <div className="m-2">
-            <button
-              className="btn btn-outline-primary m-3 p-3"
-              style={{ width: "120px" }}
-            >
-              <Link
-                to="/signup"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-                Inscription
-              </Link>
-            </button>
-            <button
-              className="btn btn-outline-primary m-3 mr-5 p-3"
-              style={{ width: "120px" }}
-            >
-              <Link
-                to="/signin"
-                style={{ textDecoration: "none", color: "white" }}
-              >
-             Connexion
-              </Link>
-            </button>
+          <div style={{display:'flex'}}>
+         <Signup />
+         
+          
+           <Signin />
+         
           </div>
           <div className="caption"  
             style={{

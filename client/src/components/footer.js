@@ -1,168 +1,53 @@
 import React from "react";
 
-const footer = () => {
-  return (
-    <div>
-      <footer className="pt-5 pb-4" id="contact">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-              <h5 className="mb-4 font-weight-bold">ABOUT US</h5>
-              <p className="mb-4">Etiam laoreet in ex quis efficitur.</p>
-              <ul className="f-address">
-                <li>
-                  <div className="row">
-                    <div className="col-1">
-                      <i className="fas fa-map-marker"></i>
-                    </div>
-                    <div className="col-10">
-                      <h6 className="font-weight-bold mb-0">Address:</h6>
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="row">
-                    <div className="col-1">
-                      <i className="far fa-envelope"></i>
-                    </div>
-                    <div className="col-10">
-                      <h6 className="font-weight-bold mb-0">
-                        Have any questions?
-                      </h6>
-                      <p>Support@userthemes.com</p>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="row">
-                    <div className="col-1">
-                      <i className="fas fa-phone-volume"></i>
-                    </div>
-                    <div className="col-10">
-                      <h6 className="font-weight-bold mb-0">Address:</h6>
-                      <p>+XX (0) XX XX-XXXX-XXXX</p>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-              <h5 className="mb-4 font-weight-bold">FRESH TWEETS</h5>
-              <ul className="f-address">
-                <li>
-                  <div className="row">
-                    <div className="col-1">
-                      <i className="fab fa-twitter"></i>
-                    </div>
-                    <div className="col-10">
-                      <p className="mb-0">
-                        @userthemesrel HTML Version Out Now
-                      </p>
-                      <label>10 Mins Ago</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="row">
-                    <div className="col-1">
-                      <i className="fab fa-twitter"></i>
-                    </div>
-                    <div className="col-10">
-                      <p className="mb-0">
-                        @userthemesrel HTML Version Out Now
-                      </p>
-                      <label>10 Mins Ago</label>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <div className="row">
-                    <div className="col-1">
-                      <i className="fab fa-twitter"></i>
-                    </div>
-                    <div className="col-10">
-                      <p className="mb-0">
-                        @userthemesrel HTML Version Out Now
-                      </p>
-                      <label>10 Mins Ago</label>
-                    </div>
-                  </div>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-              <h5 className="mb-4 font-weight-bold">LATEST UPDATES</h5>
-              <ul className="recent-post">
-                <li>
-                  <label className="mr-3">
-                    28 <br />
-                    <span>APR</span>
-                  </label>
-                  <span>Rendomised words which dont look eveable.</span>
-                </li>
-                <li>
-                  <label className="mr-3">
-                    29 <br />
-                    <span>APR</span>
-                  </label>
-                  <span>Rendomised words which dont look eveable.</span>
-                </li>
-                <li>
-                  <label className="mr-3">
-                    30 <br />
-                    <span>APR</span>
-                  </label>
-                  <span>Rendomised words which dont look eveable.</span>
-                </li>
-              </ul>
-            </div>
-            <div className="col-lg-3 col-md-6 col-sm-6 mt-2 mb-4">
-              <h5 className="mb-4 font-weight-bold">CONNECT WITH US</h5>
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Your Email Address"
-                />
-                <span className="input-group-addon" id="basic-addon2">
-                  <i className="fas fa-check"></i>
-                </span>
-              </div>
-              <ul className="social-pet mt-4">
-                <li>
-                  <i className="fab fa-facebook-f"></i>
-                </li>
-                <li>
-                  <i className="fab fa-twitter"></i>
-                </li>
-                <li>
-                  <i className="fab fa-google-plus-g"></i>
-                </li>
-                <li>
-                  <i className="fab fa-instagram"></i>
-                </li>
-              </ul>
-            </div>
+const Footer = () => {
+  return(
+  <footer className="/ font-small stylish-color-dark pt-4">
+      <div className="container text-center text-md-left">
+        <div className="row">
+          <div className="col-md-2 mx-auto">
+            <h5 className="font-weight-bold  mt-3 mb-4">Besoin d'aide?</h5>
+            <p className="adress-mail">3allemni@gmail.com</p>
           </div>
-        </div>
-      </footer>
 
-      <section className="copyright">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 ">
-              <div className="text-center text-white">
-                &copy; 2018 Your Company. All Rights Reserved.
-              </div>
-            </div>
+          <hr className="clearfix w-100 d-md-none" />
+
+          <div className="col-md-2 mx-auto">
+            <h5 className="font-weight-bold text-uppercase mt-3 mb-4">
+              Suivez-nous
+            </h5>
+            <a href="https://www.facebook.com/allemni.kids.7" target="_blank">
+              <img
+                className="facebook"
+                alt="Icon_facebook"
+                src="https://img.icons8.com/bubbles/2x/facebook-new.png"
+              />
+            </a>
+            <a href="https://www.facebook.com/FarFaria" target="_blank">
+              <img
+                className="instagram"
+                alt="Icon_instragram"
+                src="https://retohercules.com/images/insagram-png-16.png"
+              />
+            </a>
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-instagram"></i>
           </div>
+          
+          <img
+            className="img-footer"
+            src="https://cdn.lingokids.com/assets/home/what_is/family-8fe6c2336ed15d62aaf403de8020c088c1b4f52942909a6eea2b4887a5505803.png"
+            width="200"
+            height="150"
+            alt=""
+            typeof="foaf:Image"
+          />
+
         </div>
-      </section>
-    </div>
-  );
+      </div>
+      <div class="footer-copyright text-center py-3">© 2019 Copyright</div>
+    </footer>)
+
 };
 
-export default footer;
+export default Footer;

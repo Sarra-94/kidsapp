@@ -353,3 +353,40 @@ footer {
     -webkit-transition-delay: 0.1s;
     transition-delay: 0.1s;
   }
+/* .footer {
+  background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20190220/ourmid/pngtree-blue-background-childlike-background-simple-baby-products-image_4389.jpg");
+} */
+.navbar {
+    background-color: #f17887;
+  }
+  .nav-link {
+    color: white;
+  }
+  .pb-4 {
+    background-color: #8bbfbd;
+  }
+  .font-weight-bold {
+    color: #f7ca5a;
+  }
+  .page-footer {
+    background-image: url("https://curiousworld-static-files.s3.amazonaws.com/cw_files/foreground_clone.png");
+  }
+  .font-small {
+    background-color: #f17887;
+    height: 150px;
+  }
+  .facebook {
+    width: 60px;
+    height: 60px;
+  }
+  .instagram {
+    width: 40px;
+    height: 40px;
+  }
+  .adress-mail {
+    color: white;
+    font-size: 15px;
+  }
+  .footer-copyright {
+    color: #ff4560;
+  }  

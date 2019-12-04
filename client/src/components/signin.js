@@ -6,25 +6,25 @@ import { Modal, Button } from 'antd';
 class Signup extends React.Component {
   state = { visible: false };
 
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  };
+//   showModal = () => {
+//     this.setState({
+//       visible: true,
+//     });
+//   };
 
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false, name:'',password:'',email:'' 
-    });
-  };
+//   handleOk = e => {
+//     console.log(e);
+//     this.setState({
+//       visible: false, name:'',password:'',email:'' 
+//     });
+//   };
 
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
+//   handleCancel = e => {
+//     console.log(e);
+//     this.setState({
+//       visible: false,
+//     });
+//   };
    handleChange=(e)=>{
       this.setState({[e.target.name]:e.target.value})
   }
@@ -41,6 +41,7 @@ class Signup extends React.Component {
             alert('error')
         })
     }
+// localStorage.getItem('token') // decodage
   render() {
     return (
   <div>

@@ -52,41 +52,52 @@ const useStyles = makeStyles(theme => ({
   const [error, setError] = React.useState("");
   const handleChange = e =>
     setRegister({ ...register, [e.target.name]: e.target.value });
+  
   const handleSumbit = async () => {
-    if (
-        register.name===""||
-      !register.email ||
-      register.email === "" ||
-      !register.password ||
-      register.password === ""
-    )
-      return alert("Champs vide");
-    else if (
-      !/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(
-        register.password
-      )
-    )
-      return setError(
-       alert( "Enter a Valid password lowercase uppercase number & special caracter")
-      );
-    else if (
-      !/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/.test(
-        register.email
-      )
-    )
-      return setError("Enter a Valid Email");
-    try {
-      const res = await axios.post("/user/register", register);
-      if (res.data.token) {
-        localStorage.setItem("token", res.data.token);
-        props.history.push("/movie");
-      } else setError("register failed");
-    } catch (err) {
-      setError("server error");
+          axios.post("/user/register", register)
+      .then(  props.history.push("/home"))
+      .catch(err => console.log(err));
+  };
+  const  configtoken = () => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-type": "application/json"
+      }
+    };
+    if (token) {
+      config.headers["Authorization"] = token;
     }
+    // const config = { headers: { common: { Authorization: token } } };
+    console.log(config);
+    return config;
+  };
+  // validation session // token
+  
+    React.useEffect(()=> {
+    console.log(configtoken());
+    axios
+      .get("/user/current", configtoken())
+      .then(res => console.log(res.data))
+      .catch(err => console.log(err.response.data));
+  })
+
+  const parseJwt = token => {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function(c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+
+    return JSON.parse(jsonPayload);
   };
 
-  return (
+  return ( 
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>

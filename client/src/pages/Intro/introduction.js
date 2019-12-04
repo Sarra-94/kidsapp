@@ -9,7 +9,7 @@ import home from "../../assets/home/home.jpg";
 import readbook from "../../assets/intro/read.jpg";
 import ABC from "../../assets/intro/ABC.png";
 
-function Home() {
+function Intro() {
   return (
     <div className="App">
       <div className="bgimg-1">
@@ -135,4 +135,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Intro;

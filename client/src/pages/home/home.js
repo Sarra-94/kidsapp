@@ -11,41 +11,14 @@ import cst from "../../assets/home/cst.jpg";
 import disney from "../../assets/home/disney.jpg";
 import recette from "../../assets/home/recette.jpg";
 import creation from "../../assets/home/creation.png";
-import Navbar from "../../components/navbar";
 import "./home.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import EducationVideos from "../educationVideo/educationVideos";
-import Watcheducationvideos from "../educationVideo/watcheducationvideos";
-import Home from "../Intro/introduction";
-import EducationGames from "../educationGames/educationGames";
-import ReadBook from "../readingbooks/readBook";
-import Listenbooks from "../Listenbook/Listenbook";
-import Readingbooks from "../readingbooks/readingbooks";
-import Movie from "../movie/movie";
 
 class Homeuser extends Component {
   render() {
     return (
       <div className="homepage">
-
-
-
- <Router>
-        <Navbar />
-        <Switch>  
-          <Route path="/edGames" component={EducationGames} />
-          <Route exact path="/readingbooks" component={Readingbooks} />
-          <Route exact path="/movie" component={Movie} />
-          <Route exact path="/edVideos" component={EducationVideos} />
-          <Route exact path="/:title" component={Watcheducationvideos} />
-          <Route exact path="/readingbooks/:title" component={ReadBook}></Route>
-          <Route exact path="/listen" component={Listenbooks} />
-        </Switch>
-      </Router>
-
-
-
 
         <div id="carousel" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">

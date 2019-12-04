@@ -12,7 +12,7 @@ class Navbar extends Component {
     return (
       <div>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
             <button className="btn btn-outline-primary m-3 p-3" href="#">
               Home
             </button>
@@ -45,13 +45,13 @@ class Navbar extends Component {
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link
-                    to="/edVideos"
+                    to="/home/edVideos"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">Video Education</button>
                   </Link>
                   <Link
-                    to="/edGames"
+                    to="/home/edGames"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">Games Education</button>
@@ -72,13 +72,13 @@ class Navbar extends Component {
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                  <Link
-                    to="/movie"
+                    to="/home/movie"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">watch movie</button>
                   </Link>
                   <Link
-                    to="/game"
+                    to="/home/game"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">Play games</button>
@@ -100,13 +100,13 @@ class Navbar extends Component {
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link
-                    to="/readingbooks"
+                    to="/home/readingbooks"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">Read Books</button>
                   </Link>
                <Link
-                    to="/listen"
+                    to="/home/listen"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">Listen book</button>
@@ -139,9 +139,11 @@ class Navbar extends Component {
                     <a class="dropdown-item" href="#">
                       Premium
                     </a>
+                    <Link to='/'   style={{ textDecoration: "none", color: "white" }}>
                     <a class="dropdown-item" href="#">
                       Log out
                     </a>
+                    </Link>
                   </div>
                 </div>
               </div>

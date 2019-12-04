@@ -45,7 +45,7 @@ class Navbar extends Component {
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link
-                    to="/home/edVideos"
+                    to="/home/edVideo"
                     style={{ textDecoration: "none", color: "white" }}
                   >
                     <button class="dropdown-item">Video Education</button>

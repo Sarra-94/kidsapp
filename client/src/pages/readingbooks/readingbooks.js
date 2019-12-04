@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Cardbook from "../../components/cardbook";
+import Cardbook from "../../components/cardreadbook";
 import { getreadingbooks } from "../../actions/index";
 import "./readingbooks.css";
 

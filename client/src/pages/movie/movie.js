@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import Cardcomp from "../../components/card";
+import Cardmovie from "../../components/cardmovie";
 import { getMovie } from "../../actions/index";
 import "./movie.css";
 
@@ -14,7 +14,7 @@ class Movie extends Component {
     return (
       <div className="cards">
         {this.props.movie&&this.props.movie.map(el => (
-          <Cardcomp key={el._id} card={el}></Cardcomp>
+          <Cardmovie key={el._id} card={el}></Cardmovie>
         ))}
       </div>
     );

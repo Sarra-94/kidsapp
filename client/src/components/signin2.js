@@ -14,7 +14,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -23,7 +22,6 @@ function Copyright() {
     </Typography>
   );
 }
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -43,7 +41,6 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2),
   },
 }));
-
  function SignIn(props) {
   const classes = useStyles();
  const [login, setLogin] = React.useState({});
@@ -59,7 +56,6 @@ const useStyles = makeStyles(theme => ({
       login.password === ""
     )
       return setError("Champs vide");
-
     try {
       const res = await axios.post("/user/login", login);
       if (res.data.token) {

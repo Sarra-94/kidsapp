@@ -4,7 +4,8 @@ import {
   GET_READING_BOOKS,
   GET_MOVIE,
   GET_LISTEN_BOOKS,
-  GET_GAMES
+  GET_GAMES,
+  UPDATE_CHILD
 } from "./types";
 import axios from "axios";
 
@@ -42,5 +43,11 @@ export const getgames = () => dispatch => {
   axios
     .get("/games")
     .then(res => dispatch({ type: GET_GAMES, payload: res.data }))
+    .catch(err => console.log(err));
+};
+export const updateChild = childUpdate => dispatch => {
+  axios
+    .put(`/user/update`, childUpdate)
+    .then(res => console.log("child updated"))
     .catch(err => console.log(err));
 };

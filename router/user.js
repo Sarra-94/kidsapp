@@ -5,9 +5,8 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const passport = require("passport");
-const config=require("config")
+const config = require("config");
 const User = require("../models/user");
-
 
 // register
 router.post("/register", (req, res) => {
@@ -20,7 +19,7 @@ router.post("/register", (req, res) => {
     const newUser = new User({
       name,
       email,
-      password
+      password,
     });
 
     bcrypt.genSalt(10, (err, salt) => {
@@ -51,7 +50,7 @@ router.post("/login", (req, res) => {
         const payload = { id, email, name };
         jwt.sign(
           payload,
-          config.get('secretkey'),
+          config.get("secretkey"),
           { expiresIn: 3600 },
           (err, token) => {
             if (err) throw err;
@@ -74,4 +73,10 @@ router.get(
   }
 );
 
+router.put("/update", (req, res) => {
+  child=req.body
+  Contact.findOneAndUpdate(req.params.email, { $push: { childs: child} })
+    .then(user => res.send(user))
+    .catch(err => res.send(err));
+});
 module.exports = router;

@@ -14,7 +14,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
-
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -25,7 +24,6 @@ function Copyright() {
     </Typography>
   );
 }
-
 const useStyles = makeStyles(theme => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -45,7 +43,6 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(3, 0, 2)
   }
 }));
-
  function SignUp(props) {
   const classes = useStyles();
   const [register, setRegister] = React.useState({});
@@ -54,49 +51,11 @@ const useStyles = makeStyles(theme => ({
     setRegister({ ...register, [e.target.name]: e.target.value });
   
   const handleSumbit = async () => {
-          axios.post("/user/register", register)
-      .then(  props.history.push("/home"))
-      .catch(err => console.log(err));
+           axios.post("/user/register", register)
+          .then(  props.history.push("/signin"))
+          .catch(err => console.log(err));
   };
-  const  configtoken = () => {
-    const token = localStorage.getItem("token");
-    const config = {
-      headers: {
-        "Content-type": "application/json"
-      }
-    };
-    if (token) {
-      config.headers["Authorization"] = token;
-    }
-    // const config = { headers: { common: { Authorization: token } } };
-    console.log(config);
-    return config;
-  };
-  // validation session // token
-  
-    React.useEffect(()=> {
-    console.log(configtoken());
-    axios
-      .get("/user/current", configtoken())
-      .then(res => console.log(res.data))
-      .catch(err => console.log(err.response.data));
-  })
-
-  const parseJwt = token => {
-    var base64Url = token.split(".")[1];
-    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
-    var jsonPayload = decodeURIComponent(
-      atob(base64)
-        .split("")
-        .map(function(c) {
-          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
-        })
-        .join("")
-    );
-
-    return JSON.parse(jsonPayload);
-  };
-
+ 
   return ( 
     <Container component="main" maxWidth="xs">
       <CssBaseline />

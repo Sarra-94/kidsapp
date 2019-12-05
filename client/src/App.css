@@ -515,7 +515,10 @@ h6 {
   display: flex;
   justify-content: center;
 }
-select{
 
-
+.ant-modal-body {
+  display: flex;
+  /* flex-direction: column; */
+  justify-content: space-around;
+  justify-content: space-between;
 }

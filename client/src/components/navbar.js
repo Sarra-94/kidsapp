@@ -2,13 +2,82 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import parent from "../assets/intro/parent.svg";
 import child from "../assets/intro/child.svg";
+import axios from "axios";
+import { Modal, Button } from 'antd';
+import {connect} from 'react-redux';
+import {updateChild} from '"../actions/index";'
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      child:{ name:"sarra", age:"4"},
+      loading: false,
+    visible: false,
+    };
+  }
+    showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  };
+  handleOk = () => {
+    this.setState({ loading: true });
+    setTimeout(() => {
+      this.setState({ loading: false, visible: false });
+    }, 3000);
+  };
+  
+  handleCancel = () => {
+    this.setState({ visible: false });
+  };
+
+  logout = () => {
+    localStorage.removeItem("token");
+  };
+   parseJwt=token=> {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      atob(base64)
+        .split("")
+        .map(function(c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
+  
+    return JSON.parse(jsonPayload);
+  }
+  
+  componentDidMount(){
+    axios
+      .get("users/current", this.configtoken())
+      .then(res => res.data)
+      .catch(err => err.response.data);
+  }
+   configtoken = () => {
+    const token = localStorage.getItem("token");
+    const config = {
+      headers: {
+        "Content-type": "application/json"
+      }
+    };
+    if (token) {
+      config.headers["Authorization"] = token;
+      console.log(this.parseJwt(token));
+    }
+    // const config = { headers: { common: { Authorization: token } } };
+    console.log(config);
+    return config;
+  };
+  handleChangemodal=(e)=>{
+    this.setState({child:{...this.state.child,[e.target.name]:e.target.value
+    }})
   }
   render() {
+        const { visible, loading } = this.state;
+console.log(this.state.child)
     return (
       <div>
         <nav class="navbar navbar-expand-lg ">
@@ -28,7 +97,6 @@ class Navbar extends Component {
           >
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item dropdown">
@@ -97,7 +165,6 @@ class Navbar extends Component {
                 >
                   Books
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <Link
                     to="/home/readingbooks"
@@ -115,12 +182,11 @@ class Navbar extends Component {
               </li>
             </ul>
           </div>
-
           <div class="form-inline my-2 my-lg-0">
             <div className="authentification">
               <div className="parentsection">
                 <img class="parent" src={parent} style={{ width: "30px" }} />
-                <span>xxxx yyyy</span>
+                <span>{this.parseJwt(localStorage.getItem("token")).name}</span>
                 <div class="dropdown">
                   <a
                     class="btn btn-secondary dropdown-toggle"
@@ -142,9 +208,9 @@ class Navbar extends Component {
                       to="/"
                       style={{ textDecoration: "none", color: "white" }}
                     >
-                      <a class="dropdown-item" href="#">
+                      <button onClick={this.logout} class="dropdown-item" href="#">
                         Log out
-                      </a>
+                      </button>
                     </Link>
                   </div>
                 </div>
@@ -170,11 +236,38 @@ class Navbar extends Component {
                 </div>
               </div>
               <div>
-                <button type="button" class="btn btn-labeled btn-default">
-                  <span>
-                    <i class="fad fa-user-plus"></i> Ajouter
-                  </span>
-                </button>
+              
+ 
+      <div>
+        <Button type="primary" onClick={this.showModal}>
+          Open Modal with customized footer
+        </Button>
+        <Modal
+          visible={visible}
+          title="Title"
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+          footer={[
+            <Button key="back" onClick={this.handleCancel}>
+              Return
+            </Button>,
+            <Button key="submit" 
+            type="primary" 
+            loading={loading} 
+            onClick={()=>{this.handleOk() ; this.props.updateChild(this.state.child)}} >
+              Submit
+            </Button>,
+          ]}
+        >
+          <span style={{color:'black'}}>Name:</span>
+          <input type="text" name='name' value={this.state.child.name} onChange={(e)=>this.handleChangemodal(e)} />
+           <span style={{color:'black'}}>Age:</span>
+          <input type="text" name='age' value={this.state.child.age}  onChange={(e)=>this.handleChangemodal(e)}/>
+      
+        </Modal>
+      </div>
+    
+  
               </div>
             </div>
           </div>
@@ -184,4 +277,5 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+
+export default connect(null,{updateChild})(Navbar);

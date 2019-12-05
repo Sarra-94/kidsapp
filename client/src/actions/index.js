@@ -47,7 +47,7 @@ export const getgames = () => dispatch => {
 };
 export const updateChild = childUpdate => dispatch => {
   axios
-    .put(`/user/update`, childUpdate)
-    .then(res => console.log("child updated"))
+    .put("/user", childUpdate)
+    .then(res => dispatch({ type: UPDATE_CHILD, payload: res.data }))
     .catch(err => console.log(err));
 };

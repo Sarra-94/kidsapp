@@ -9,8 +9,9 @@ const Cardgame = props => {
     <Card
       class="d-inline p-2 bg-primary text-white"
       hoverable
-      style={{ width: "20%", margin: "2%",heigh:'350px' }}
-      cover={<img style={{heigh:"100%"}} alt="example" src={card.image} />}
+      style={{ width: "20%", margin: "2%",heigh:'350px' ,
+        borderRadius: "12px"}}
+      cover={<img  style={{ height: "200px", borderRadius: "12px" }} alt="example" src={card.image} />}
     >
       <Meta
         title={card.title}

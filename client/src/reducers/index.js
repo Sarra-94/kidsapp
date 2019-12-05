@@ -5,6 +5,7 @@ import {
   GET_MOVIE,
   GET_LISTEN_BOOKS,
   GET_GAMES,
+  UPDATE_CHILD
 } from "../actions/types";
 
 const initialState = {
@@ -13,7 +14,8 @@ const initialState = {
   readingbooks: [],
   movie: [],
   listenbooks: [],
-  games: []
+  games: [],
+  childs:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -42,6 +44,10 @@ const reducer = (state = initialState, action) => {
     case GET_GAMES:
       return {
         games: payload
+      };
+        case UPDATE_CHILD:
+      return {
+        childs: payload
       };
       
     default:

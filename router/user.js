@@ -8,6 +8,19 @@ const passport = require("passport");
 const config = require("config");
 const User = require("../models/user");
 
+// update
+
+router.put("/", (req, res) => {
+  var name = req.body.name;
+  var age = req.body.age;
+  var child = { name, age };
+console.log(child)
+  User.findByIdAndUpdate(req.body.idparent,
+   { $push: { childs: child } })
+   .then(data=>res.json(data))
+    .catch(err => res.send(err));
+
+});
 // register
 router.post("/register", (req, res) => {
   const { name, email, password } = req.body;
@@ -19,7 +32,7 @@ router.post("/register", (req, res) => {
     const newUser = new User({
       name,
       email,
-      password,
+      password
     });
 
     bcrypt.genSalt(10, (err, salt) => {
@@ -41,13 +54,13 @@ router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {
-    const { id, email, name } = user;
+    const { id, email, name ,childs} = user;
     if (!user) {
       return res.json({ error: "email is not valid" });
     }
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id, email, name };
+        const payload = { id, email, name,childs };
         jwt.sign(
           payload,
           config.get("secretkey"),
@@ -73,10 +86,4 @@ router.get(
   }
 );
 
-router.put("/update", (req, res) => {
-  child=req.body
-  Contact.findOneAndUpdate(req.params.email, { $push: { childs: child} })
-    .then(user => res.send(user))
-    .catch(err => res.send(err));
-});
 module.exports = router;

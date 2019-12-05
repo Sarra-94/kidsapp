@@ -27,9 +27,9 @@ class Homeuser extends Component {
             <li data-target=".carousel" data-slide-to="2"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active" >
               <img class="d-block w-50 h-15" src={slide1} alt="slide1" />
-              <div class="carousel-caption">
+              <div class="carousel-caption" style={{width:'50%' ,flex:'end'}}>
                 <h2>
                   VIVEZ AU QUOTIDIEN LES ACTUALITE DE VOS ENFANTS AVEC{" "}
                   <span style={{ color: "#E91E63" }}>3ALLAMNI</span>
@@ -59,13 +59,7 @@ class Homeuser extends Component {
             <span class="carousel-control-next-icon"></span>
           </a>
         </div>
-        {/* <div className="textpresentation">
-          <p className="allamnidescription">
-            <span>3LAMNY </span>
-            est une plateforme éducative tunisienne pour vos enfants,
-          </p>
-          <img src={slide3} />
-        </div> */}
+     
         <div className="news">
           <div className="idee">
             <div className="textenews">

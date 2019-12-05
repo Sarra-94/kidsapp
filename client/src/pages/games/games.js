@@ -8,7 +8,7 @@ class Game extends Component {
     super(props);
     this.state = {
       langue: ["choisir la langue", "français", "anglais"],
-      valuelangue: "choisir la langue "
+      valuelangue: "choisir la langue"
     };
   }
   componentDidMount() {
@@ -28,10 +28,10 @@ class Game extends Component {
             <option value={el}>{el}</option>
           ))}
         </select>
+
         <div className="cardsGames">
           {this.state.valuelangue === "choisir la langue"
-            ? this.props.games &&
-              this.props.games.map(el => (
+            ? this.props.games &&this.props.games.map(el => (
                 <Cardgame key={el._id} card={el}></Cardgame>
               ))
             : this.props.games &&

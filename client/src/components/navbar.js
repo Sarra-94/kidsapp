@@ -1,24 +1,29 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import parent from "../assets/intro/parent.svg";
-import child from "../assets/intro/child.svg";
+import parent from "../assets/intro/parent.png";
+import child from "../assets/intro/child.png";
+import logo from "../assets/home/logo.png";
 import axios from "axios";
-import { Modal, Button } from 'antd';
-import {connect} from 'react-redux';
-import {updateChild} from '"../actions/index";'
+import { Modal, Button } from "antd";
+import { connect } from "react-redux";
+import { updateChild } from "../actions/index";
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      child:{ name:"sarra", age:"4"},
+      child: {
+        idparent: this.parseJwt(localStorage.getItem("token")).id,
+        name: "",
+        age: ""
+      },
       loading: false,
-    visible: false,
+      visible: false
     };
   }
-    showModal = () => {
+  showModal = () => {
     this.setState({
-      visible: true,
+      visible: true
     });
   };
   handleOk = () => {
@@ -27,7 +32,7 @@ class Navbar extends Component {
       this.setState({ loading: false, visible: false });
     }, 3000);
   };
-  
+
   handleCancel = () => {
     this.setState({ visible: false });
   };
@@ -35,7 +40,7 @@ class Navbar extends Component {
   logout = () => {
     localStorage.removeItem("token");
   };
-   parseJwt=token=> {
+  parseJwt = token => {
     var base64Url = token.split(".")[1];
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
     var jsonPayload = decodeURIComponent(
@@ -46,17 +51,17 @@ class Navbar extends Component {
         })
         .join("")
     );
-  
+
     return JSON.parse(jsonPayload);
-  }
-  
-  componentDidMount(){
+  };
+
+  componentDidMount() {
     axios
       .get("users/current", this.configtoken())
       .then(res => res.data)
       .catch(err => err.response.data);
   }
-   configtoken = () => {
+  configtoken = () => {
     const token = localStorage.getItem("token");
     const config = {
       headers: {
@@ -71,16 +76,18 @@ class Navbar extends Component {
     console.log(config);
     return config;
   };
-  handleChangemodal=(e)=>{
-    this.setState({child:{...this.state.child,[e.target.name]:e.target.value
-    }})
-  }
+  handleChangemodal = e => {
+    this.setState({
+      child: { ...this.state.child, [e.target.name]: e.target.value }
+    });
+  };
   render() {
-        const { visible, loading } = this.state;
-console.log(this.state.child)
+    const { visible, loading } = this.state;
+
     return (
       <div>
         <nav class="navbar navbar-expand-lg ">
+          <img src={logo} alt="logo" width="135px" height="100px" />
           <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
             <button class="btn btn-light" type="button">
               Home
@@ -185,8 +192,16 @@ console.log(this.state.child)
           <div class="form-inline my-2 my-lg-0">
             <div className="authentification">
               <div className="parentsection">
-                <img class="parent" src={parent} style={{ width: "30px" }} />
-                <span>{this.parseJwt(localStorage.getItem("token")).name}</span>
+                <div className="parentaccount">
+                  <img
+                    class="parent"
+                    src={parent}
+                    style={{ width: "30px", marginLeft: "1px" }}
+                  />
+                  <span style={{ fontSize: "120%" }}>
+                    {this.parseJwt(localStorage.getItem("token")).name}
+                  </span>
+                </div>
                 <div class="dropdown">
                   <a
                     class="btn btn-secondary dropdown-toggle"
@@ -208,7 +223,11 @@ console.log(this.state.child)
                       to="/"
                       style={{ textDecoration: "none", color: "white" }}
                     >
-                      <button onClick={this.logout} class="dropdown-item" href="#">
+                      <button
+                        onClick={this.logout}
+                        class="dropdown-item"
+                        href="#"
+                      >
                         Log out
                       </button>
                     </Link>
@@ -229,45 +248,75 @@ console.log(this.state.child)
                     aria-expanded="false"
                   ></a>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="#">
-                      Enfant 1
-                    </a>
+                 { this.parseJwt(localStorage.getItem("token")).childs?
+                 this.parseJwt(localStorage.getItem("token")).childs.map(el => (
+                          <button
+                            class="btn btn-secondary "
+                            role="button"
+                            id="dropdownMenuLink"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                          >
+                            {el.name}
+                          </button>))
+                      : "il ya pas encore des anfants"}
                   </div>
                 </div>
               </div>
               <div>
-              
- 
-      <div>
-        <Button type="primary" onClick={this.showModal}>
-          Open Modal with customized footer
-        </Button>
-        <Modal
-          visible={visible}
-          title="Title"
-          onOk={this.handleOk}
-          onCancel={this.handleCancel}
-          footer={[
-            <Button key="back" onClick={this.handleCancel}>
-              Return
-            </Button>,
-            <Button key="submit" 
-            type="primary" 
-            loading={loading} 
-            onClick={()=>{this.handleOk() ; this.props.updateChild(this.state.child)}} >
-              Submit
-            </Button>,
-          ]}
-        >
-          <span style={{color:'black'}}>Name:</span>
-          <input type="text" name='name' value={this.state.child.name} onChange={(e)=>this.handleChangemodal(e)} />
-           <span style={{color:'black'}}>Age:</span>
-          <input type="text" name='age' value={this.state.child.age}  onChange={(e)=>this.handleChangemodal(e)}/>
-      
-        </Modal>
-      </div>
-    
-  
+                <div>
+                  <Button
+                    class="btn btn-light"
+                    style={{
+                      color: " black",
+                      background: " black",
+                      borderColor: "black",
+                      color: "white"
+                    }}
+                    type="primary"
+                    onClick={this.showModal}
+                  >
+                    ajouter enfant
+                  </Button>
+                  <Modal
+                    visible={visible}
+                    title="Title"
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    footer={[
+                      <Button key="back" onClick={this.handleCancel}>
+                        Return
+                      </Button>,
+                      <Button
+                        key="submit"
+                        type="primary"
+                        loading={loading}
+                        onClick={() => {
+                          this.handleOk();
+                          this.props.updateChild(this.state.child);
+                        }}
+                      >
+                        Submit
+                      </Button>
+                    ]}
+                  >
+                    <span style={{ color: "black" }}>Name:</span>
+                    <input
+                      type="text"
+                      name="name"
+                      value={this.state.child.name}
+                      onChange={e => this.handleChangemodal(e)}
+                    />
+                    <span style={{ color: "black" }}>Age:</span>
+                    <input
+                      type="text"
+                      name="age"
+                      value={this.state.child.age}
+                      onChange={e => this.handleChangemodal(e)}
+                    />
+                  </Modal>
+                </div>
               </div>
             </div>
           </div>
@@ -276,6 +325,6 @@ console.log(this.state.child)
     );
   }
 }
+const mapStateToProps = state => ({ childs: state.childs });
 
-
-export default connect(null,{updateChild})(Navbar);
+export default connect(mapStateToProps, { updateChild })(Navbar);

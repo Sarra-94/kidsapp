@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import slide1 from "../../assets/home/slide1.png";
 import slide2 from "../../assets/home/slide2.jpg";
 import slide3 from "../../assets/home/slide3.jpg";
-// import slide4 from "../../assets/home/slide4.png";
+import slide4 from "../../assets/home/slide4.jpg";
 import recommandation from "../../assets/home/recommandation.png";
 import itkids from "../../assets/home/itkids.jpg";
 import fleche from "../../assets/home/fleche.jpeg";
@@ -29,20 +29,20 @@ class Homeuser extends Component {
           <div class="carousel-inner">
             <div class="carousel-item active">
               <img class="d-block w-50 h-15" src={slide1} alt="slide1" />
-              {/* <div class="carousel-caption">
+              <div class="carousel-caption">
                 <h2>
                   VIVEZ AU QUOTIDIEN LES ACTUALITE DE VOS ENFANTS AVEC{" "}
                   <span style={{ color: "#E91E63" }}>3ALLAMNI</span>
                 </h2>
-              </div> */}
+              </div>
             </div>
             <div class="carousel-item">
               <img class="d-block w-50 h-15" src={slide2} alt="slide2" />
-              {/* <div class="carousel-caption">
+              <div class="carousel-caption">
                 <h2 style={{ color: "#fff" }}>SURFER EN TOUTE SECURITE</h2>
-              </div> */}
+              </div>
             </div>
-            {/* <div class="carousel-item">
+            <div class="carousel-item">
               <img class="d-block w-50 h-20" src={slide4} alt="slide3" />
               <div class="carousel-caption">
                 <h2>
@@ -50,7 +50,7 @@ class Homeuser extends Component {
                   <span style={{ color: "#E91E63" }}>3ALLAMNI</span>
                 </h2>
               </div>
-            </div> */}
+            </div>
           </div>
           <a class="carousel-control-prev" href="#carousel" data-slide="prev">
             <span class="carousel-control-prev-icon"></span>
@@ -59,30 +59,13 @@ class Homeuser extends Component {
             <span class="carousel-control-next-icon"></span>
           </a>
         </div>
-        <div className="textpresentation">
+        {/* <div className="textpresentation">
           <p className="allamnidescription">
             <span>3LAMNY </span>
             est une plateforme éducative tunisienne pour vos enfants,
           </p>
           <img src={slide3} />
-        </div>
-        {/* <div className="recommandation">
-          <div className="partie1recom">
-            <img className="recommandationimage" src={recommandation} />
-            <h2>Recommendation</h2>
-            <p>
-              La curiosité et l'intérêt des parents pour le numérique destiné
-              aux enfants se confirment mois après mois, Il est primordial pour
-              nos enfants d'aborder les nouvelles technologies et ça grâce à des
-              centres et parmis les centres le plus recommandé est
-              <span style={{ color: "#E83E8C" }}> ITKIDS Academy</span>
-            </p>
-          </div>
-          <div className="partie2recom">
-            <img src={itkids} />
-          </div>
         </div> */}
-        {/* partie news */}
         <div className="news">
           <div className="idee">
             <div className="textenews">

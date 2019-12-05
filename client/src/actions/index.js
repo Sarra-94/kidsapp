@@ -3,7 +3,8 @@ import {
   GET_EDUCATION_GAMES,
   GET_READING_BOOKS,
   GET_MOVIE,
-  GET_LISTEN_BOOKS
+  GET_LISTEN_BOOKS,
+  GET_GAMES
 } from "./types";
 import axios from "axios";
 
@@ -35,5 +36,11 @@ export const getlistengbooks = () => dispatch => {
   axios
     .get("/listningbooks")
     .then(res => dispatch({ type: GET_LISTEN_BOOKS, payload: res.data }))
+    .catch(err => console.log(err));
+};
+export const getgames = () => dispatch => {
+  axios
+    .get("/games")
+    .then(res => dispatch({ type: GET_GAMES, payload: res.data }))
     .catch(err => console.log(err));
 };

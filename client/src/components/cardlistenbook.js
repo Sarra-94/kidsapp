@@ -10,7 +10,7 @@ const Cardbook = props => {
     <Card
       className="card"
       hoverable
-      style={{ width: "20%", margin: "2%" }}
+         style={{ width: "20%", margin: "2%",heigh:'350px' }}
       cover={<img alt="example" src={card.image} />}
     >
       <Meta title={card.title} description='To read that book Press the button' />

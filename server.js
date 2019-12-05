@@ -26,6 +26,7 @@ app.use("/educationgames", require("./router/educationGames"));
 app.use("/readingbooks", require("./router/readingBooks"));
 app.use("/movie", require("./router/movie"));
 app.use("/listningbooks", require("./router/listningbooks"));
+app.use("/games", require("./router/games"));
 app.use('/user',require('./router/user'))
 //run server
 const port = process.env.PORT || 5000;

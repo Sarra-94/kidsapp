@@ -3,7 +3,8 @@ import {
   GET_EDUCATION_GAMES,
   GET_READING_BOOKS,
   GET_MOVIE,
-  GET_LISTEN_BOOKS
+  GET_LISTEN_BOOKS,
+  GET_GAMES
 } from "../actions/types";
 
 const initialState = {
@@ -11,7 +12,8 @@ const initialState = {
   educationGames: [],
   readingbooks: [],
   movie: [],
-  listenbooks: []
+  listenbooks: [],
+  games:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -36,6 +38,10 @@ const reducer = (state = initialState, action) => {
     case GET_LISTEN_BOOKS:
       return {
         listenbooks: payload
+      };
+        case GET_GAMES:
+      return {
+        games: payload
       };
     default:
       return state;

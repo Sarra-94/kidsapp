@@ -9,7 +9,7 @@ const Cardmovie = props => {
     <Card
       className="card"
       hoverable
-      style={{ width: "20%", margin: "2%" , height:'50%'}}
+      style={{ width: "20%", margin: "2%",heigh:'350px' }}
       cover={<img  style={{height:"50%"}} alt="example" src={card.image} />}
     >
       <Meta title={card.title} description='Pour voir le Video Appuez sur le bouton si dessous' />

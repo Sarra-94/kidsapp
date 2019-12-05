@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const WatchMovie = props => {
+const Readbook = props => {
     console.log(props.location.url)
 
   return (
@@ -12,4 +12,4 @@ const WatchMovie = props => {
   );
 };
 
-export default WatchMovie;
+export default Readbook;

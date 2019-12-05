@@ -25,10 +25,11 @@ class EducationVideos extends Component {
   render() {
     return (
       <div className="pageeducation">
+      <div className='select'>
         <select
           placeHolder="choisir la langue"
           onChange={e => this.setState({ valuelangue: e.target.value })}
-          style={{ width: "20%" }}
+          style={{ width: "20%", marginRight:'2%'}}
         >
           {this.state.langue.map(el => (
             <option value={el}>{el}</option>
@@ -43,6 +44,7 @@ class EducationVideos extends Component {
             <option value={el}>{el}</option>
           ))}
         </select>
+        </div>
         { !this.props.educationVideos? 'is Loading':
         <div className="cards">
           {(this.state.valuelangue === "choisir la langue" || this.state.valuecategorie==="choisir la categories" )

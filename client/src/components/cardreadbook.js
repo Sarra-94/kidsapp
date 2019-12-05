@@ -10,11 +10,14 @@ const Cardbook = props => {
     <Card
       className="card"
       hoverable
-      style={{ width: "20%", margin: "2%" }}
+      style={{ width: "20%", margin: "2%", heigh: "300px" }}
       cover={<img alt="example" src={card.image} />}
     >
-      <Meta title={card.title} description='To read that book Press the button' />
-      <div className="buttonscard" >
+      <Meta
+        title={card.title}
+        description="To read that book Press the button"
+      />
+      <div className="buttonscard">
         <Link
           to={{
             pathname: `/home/readingbooks/${card.title}`,
@@ -29,7 +32,7 @@ const Cardbook = props => {
             Read Story
           </button>
         </Link>
-        <span  class="glyphicon glyphicon-heart"></span>
+        <span class="glyphicon glyphicon-heart"></span>
       </div>
     </Card>
   );

@@ -11,9 +11,9 @@ class Navbar extends Component {
   render() {
     return (
       <div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg ">
           <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
-            <button className="btn btn-outline-primary m-3 p-3" href="#">
+            <button class="btn btn-light" type="button">
               Home
             </button>
           </Link>
@@ -71,7 +71,7 @@ class Navbar extends Component {
                   Entertaiment
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <Link
+                  <Link
                     to="/home/movie"
                     style={{ textDecoration: "none", color: "white" }}
                   >
@@ -105,7 +105,7 @@ class Navbar extends Component {
                   >
                     <button class="dropdown-item">Read Books</button>
                   </Link>
-               <Link
+                  <Link
                     to="/home/listen"
                     style={{ textDecoration: "none", color: "white" }}
                   >
@@ -113,7 +113,6 @@ class Navbar extends Component {
                   </Link>
                 </div>
               </li>
-           
             </ul>
           </div>
 
@@ -139,10 +138,13 @@ class Navbar extends Component {
                     <a class="dropdown-item" href="#">
                       Premium
                     </a>
-                    <Link to='/'   style={{ textDecoration: "none", color: "white" }}>
-                    <a class="dropdown-item" href="#">
-                      Log out
-                    </a>
+                    <Link
+                      to="/"
+                      style={{ textDecoration: "none", color: "white" }}
+                    >
+                      <a class="dropdown-item" href="#">
+                        Log out
+                      </a>
                     </Link>
                   </div>
                 </div>

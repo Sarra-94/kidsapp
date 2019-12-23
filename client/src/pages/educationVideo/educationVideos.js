@@ -21,6 +21,7 @@ class EducationVideos extends Component {
 
   componentDidMount() {
     this.props.geteducationVideos();
+    
   }
   render() {
     return (

@@ -13,7 +13,7 @@ import Game from "./games/games"
 import Readingbooks from "./readingbooks/readingbooks";
 import Readbook from "./readingbooks/readBook";
 import Listenbooks from "./Listenbook/Listenbook";
-
+ import Pricing from './premium'
 
 
 
@@ -43,6 +43,7 @@ class App2 extends Component {
 
           <Route exact path="/home/listen" component={Listenbooks} />
           <Route exact path="/home/listen/:title" component={Readbook} />
+          <Route exact path="/home/premium" component={Pricing}/>
 
         </Switch>
     

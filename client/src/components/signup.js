@@ -1,56 +1,141 @@
-import React, { Component } from 'react';
-import { Modal, Button } from 'antd';
-import axios from 'axios'
-import {withRouter} from 'react-router-dom'
-class Signup extends React.Component {
-  state = { visible: false, name:'',password:'',email:'' };
+import React, { useState, Fragment } from "react";
+import Stepper from "@material-ui/core/Stepper";
+import Step from "@material-ui/core/Step";
+import StepLabel from "@material-ui/core/StepLabel";
+import FirstStep from "./FirstStep";
+import SecondStep from "./SecondStep";
+import Confirm from "./Confirm";
 
-  showModal = () => {
-    this.setState({
-      visible: true,
-    });
-  };
 
-  handleOk = e => {
-    console.log(e);
-    this.setState({
-      visible: false,
+const labels = ["First Step", "Second Step", "Confirmation"];
+const StepForm = () => {
+  const [steps, setSteps] = useState(0);
+  const [fields, setFields] = useState({
+    name: "",
+    lastname: "",
+    email: "",
+    relation: "",
+    age: '',
+    adresse: "",
+    phone: "",
+    password:""
+  });
+  // Copy fields as they all have the same name
+  const [filedError, setFieldError] = useState({
+    ...fields
+  });
+  const [isError, setIsError] = useState(false);
+  // Proceed to next step
+  const handleNext = () => setSteps(steps + 1);
+  // Go back to prev step
+  const handleBack = () => setSteps(steps - 1);
+  // Handle fields change
+  const handleChange = input => ({ target: { value } }) => {
+    // Set values to the fields
+    setFields({
+      ...fields,
+      [input]: value
     });
-  };
-
-  handleCancel = e => {
-    console.log(e);
-    this.setState({
-      visible: false,
-    });
-  };
-  handleChange=(e)=>{
-      this.setState({[e.target.name]:e.target.value})
-  }
-signup=()=>{
-    axios.post('user/register',this.state).then(()=>this.props.history.push('/movie')).catch()
-}
-  render() {
-    return (
-      <div>
-        <Button type="primary" onClick={this.showModal}>
-          sign up
-        </Button>
-        <Modal
-          title="Basic Modal"
-          visible={this.state.visible}
-          onOk={()=>{this.signup()}}
-          onCancel={this.handleCancel}
-        >
-        <div style={{display:'flex', flexDirection:'column'}}>
-       <input placeholder='name'  style={{margin:'2%'}} value={this.state.name} name='name' onChange={(e)=>this.handleChange(e)}/>      
-        <input placeholder='email' style={{margin:'2%'}} value={this.state.email} name='email' onChange={(e)=>this.handleChange(e)}/>
-        <input placeholder='password' style={{margin:'2%'}} value={this.state.password} name='password'  onChange={this.handleChange}/>
-</div>
-        </Modal>
-      </div>
+    // Handle errors
+    const formErrors = { ...filedError };
+    const lengthValidate = value.length > 0 && value.length < 4;
+    switch (input) {
+      case "firstName":
+        formErrors.name = lengthValidate
+          ? "Minimum 3 characaters required"
+          : "";
+        break;
+      case "lastName":
+        formErrors.lastName = lengthValidate
+          ? "Minimum 3 characaters required"
+          : "";
+        break;
+    //   case "email":
+    //     formErrors.email = emailRegex.test(value)
+    //       ? ""
+    //       : "Invalid email address";
+    //     break;
+    //   case "phone":
+    //     formErrors.phone = phoneRegex.test(value)
+    //       ? ""
+    //       : "Please enter a valid phone number. i.e: xxx-xxx-xxxx";
+    //     break;
+      case "adresse":
+        formErrors.adresse = lengthValidate
+          ? "Minimum 3 characaters required"
+          : "";
+        break;
+      default:
+        break;
+    }
+    // set error hook
+    Object.values(formErrors).forEach(error =>
+      error.length > 0 ? setIsError(true) : setIsError(false)
     );
-  }
-}
-
-export default withRouter(Signup)
+    // set errors hook
+    setFieldError({
+      ...formErrors
+    });
+    console.log(fields.name)
+  };
+  const handleSteps = step => {
+    switch (step) {
+      case 0:
+        return (
+          <FirstStep
+            handleNext={handleNext}
+            handleChange={handleChange}
+            values={fields}
+            isError={isError}
+            filedError={filedError}
+          />
+        );
+      case 1:
+        return (
+          <SecondStep
+            handleNext={handleNext}
+            handleBack={handleBack}
+            handleChange={handleChange}
+            values={fields}
+            isError={isError}
+            filedError={filedError}
+          />
+        );
+      case 2:
+        return (
+          <Confirm
+            handleNext={handleNext}
+            handleBack={handleBack}
+             values={fields}
+             />
+        );
+      default:
+        break;
+    }
+  };
+  // Handle components
+  return (
+    <Fragment>
+      {steps === labels.length ? (
+        // <Success />
+        "ok"
+      ) : (
+        <Fragment>
+          <Stepper
+            activeStep={steps}
+            style={{ paddingTop: 30, paddingBottom: 50 }}
+            alternativeLabel
+          >
+            {labels.map(label => (
+              <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+              </Step>
+            ))}
+          </Stepper>
+          {handleSteps(steps)}
+        </Fragment>
+      )}
+    </Fragment>
+  );
+};
+export default StepForm;

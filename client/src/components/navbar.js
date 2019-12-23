@@ -7,7 +7,6 @@ import axios from "axios";
 import { Modal, Button } from "antd";
 import { connect } from "react-redux";
 import { updateChild } from "../actions/index";
-
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -32,11 +31,9 @@ class Navbar extends Component {
       this.setState({ loading: false, visible: false });
     }, 3000);
   };
-
   handleCancel = () => {
     this.setState({ visible: false });
   };
-
   logout = () => {
     localStorage.removeItem("token");
   };
@@ -51,10 +48,8 @@ class Navbar extends Component {
         })
         .join("")
     );
-
     return JSON.parse(jsonPayload);
   };
-
   componentDidMount() {
     axios
       .get("users/current", this.configtoken())
@@ -83,16 +78,13 @@ class Navbar extends Component {
   };
   render() {
     const { visible, loading } = this.state;
-
     return (
-      <div>
+      <div className="globalnav">
         <nav class="navbar navbar-expand-lg ">
-          <img src={logo} alt="logo" width="135px" height="100px" />
-          <Link to="/home" style={{ textDecoration: "none", color: "white" }}>
-            <button class="btn btn-light" type="button">
-              Home
-            </button>
+        <Link to="/home">
+          <img src={logo} alt="logo" width="135px" height="80px" />
           </Link>
+       
           <button
             class="navbar-toggler"
             type="button"
@@ -189,16 +181,13 @@ class Navbar extends Component {
               </li>
             </ul>
           </div>
-          <div class="form-inline my-2 my-lg-0">
+          <div class="form-inline my-1 my-lg-1">
             <div className="authentification">
               <div className="parentsection">
                 <div className="parentaccount">
-                  <img
-                    class="parent"
-                    src={parent}
-                    style={{ width: "30px", marginLeft: "1px" }}
-                  />
-                  <span style={{ fontSize: "120%" }}>
+                  <img  class="parent" src={parent} style={{ width: "30px",height:"30px" }} />                
+                 
+                  <span className="childenfanttext">
                     {this.parseJwt(localStorage.getItem("token")).name}
                   </span>
                 </div>
@@ -235,8 +224,8 @@ class Navbar extends Component {
                 </div>
               </div>
               <div className="parentsection child">
-                <img class="child" src={child} style={{ width: "40px" }} />
-                <span>Enfant </span>
+                <img class="child" src={child} style={{ width: "40px",height:"40px" }} />
+                <span className="childenfanttext">Enfant </span>
                 <div class="dropdown">
                   <a
                     class="btn btn-secondary dropdown-toggle"
@@ -247,7 +236,7 @@ class Navbar extends Component {
                     aria-haspopup="true"
                     aria-expanded="false"
                   ></a>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                  { this.parseJwt(localStorage.getItem("token")).childs?
                  this.parseJwt(localStorage.getItem("token")).childs.map(el => (
                           <button
@@ -265,14 +254,16 @@ class Navbar extends Component {
                 </div>
               </div>
               <div>
-                <div>
+                 <div>
                   <Button
                     class="btn btn-light"
                     style={{
                       color: " black",
-                      background: " black",
-                      borderColor: "black",
-                      color: "white"
+                      background: " white",
+                      borderColor: "white",
+                      width:"100px",
+                      padding:"0px"
+                      
                     }}
                     type="primary"
                     onClick={this.showModal}
@@ -316,7 +307,7 @@ class Navbar extends Component {
                       onChange={e => this.handleChangemodal(e)}
                     />
                   </Modal>
-                </div>
+                </div> 
               </div>
             </div>
           </div>
@@ -326,5 +317,4 @@ class Navbar extends Component {
   }
 }
 const mapStateToProps = state => ({ childs: state.childs });
-
 export default connect(mapStateToProps, { updateChild })(Navbar);

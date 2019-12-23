@@ -98,7 +98,8 @@ function Intro() {
             <img src={homeplaying} alt="sample52" />
             <figcaption>
               <h3 style={{ fontWeight: "bold", color: "#ffffff" }}>Loisir</h3>
-              <p>If we wanted more leisure, we'd invent machines</p>
+              <p>
+Amusez-vous en regardant des films et jouer </p>
             </figcaption>
           </figure>
           <figure className="snip1307">

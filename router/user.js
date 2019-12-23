@@ -14,16 +14,33 @@ router.put("/", (req, res) => {
   var name = req.body.name;
   var age = req.body.age;
   var child = { name, age };
-console.log(child)
-  User.findByIdAndUpdate(req.body.idparent,
-   { $push: { childs: child } })
-   .then(data=>res.json(data))
+  console.log(child);
+  User.findByIdAndUpdate(req.body.idparent, { $push: { childs: child } })
+    .then(data => res.json(data))
     .catch(err => res.send(err));
 
+  User.findByIdAndUpdate(
+    req.body.idparent,
+    { $push: { childs: child } },
+    console.log(childs),
+    { new: true }
+  )
+    .then(data => res.json(data))
+    .catch(err => res.send(err));
 });
 // register
 router.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
+  const {
+    name,
+    lastname,
+    email,
+    password,
+    adresse,
+    age,
+    relation,
+    phone,
+    childs
+  } = req.body;
 
   User.findOne({ email }).then(user => {
     if (user) {
@@ -31,8 +48,14 @@ router.post("/register", (req, res) => {
     }
     const newUser = new User({
       name,
+      lastname,
       email,
-      password
+      password,
+      adresse,
+      age,
+      phone,
+      relation,
+      childs
     });
 
     bcrypt.genSalt(10, (err, salt) => {
@@ -54,13 +77,33 @@ router.post("/login", (req, res) => {
   const { email, password } = req.body;
 
   User.findOne({ email }).then(user => {
-    const { id, email, name ,childs} = user;
+    const {
+      id,
+      name,
+      lastname,
+      email,
+      adresse,
+      age,
+      phone,
+      relation,
+      childs
+    } = user;
     if (!user) {
       return res.json({ error: "email is not valid" });
     }
     bcrypt.compare(password, user.password).then(isMatch => {
       if (isMatch) {
-        const payload = { id, email, name,childs };
+        const payload = {
+          id,
+          name,
+          lastname,
+          email,
+          adresse,
+          age,
+          phone,
+          relation,
+          childs
+        };
         jwt.sign(
           payload,
           config.get("secretkey"),

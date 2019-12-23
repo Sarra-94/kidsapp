@@ -131,7 +131,7 @@ const useStyles = makeStyles(theme => ({
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-                <Link to="/signin" variant="body2">
+                <Link href="/signin" variant="body2">
                   <span> Already have an account? Sign in</span>
                 </Link>
             </Grid>

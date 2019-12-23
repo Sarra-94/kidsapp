@@ -1,6 +1,13 @@
-/* .homepage {
-  background-image: url("https://i.pinimg.com/originals/a0/b8/f0/a0b8f04ebec3316989f69118e5bde78f.jpg");
-} */
+.carousel-item{
+  display: flex;
+  }
+  .carousel-inner {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 2%;
+    border-radius: 5px;
+  }
 .allamnidescription {
     width: 60%;
     margin: auto;
@@ -15,7 +22,7 @@
     font-weight: bold;
   }
   .allamnidescription span {
-    color: #e83e8c;
+    color: #E83E8C;
   }
   .recommandationetnews {
     display: flex;
@@ -46,7 +53,7 @@
   .partie1recom h2 {
     padding-top: 1%;
     font-family: cursive;
-    color: #11a934;
+    color: #11A934;
     text-shadow: 2px 2px 4px #000000;
   }
   .partie1recom p {
@@ -60,16 +67,20 @@
   .news {
     display: flex;
     justify-content: space-around;
-    /* align-items: center; */
+    box-shadow: 15px 15px 10px #CE7B7B; 
+    -webkit-box-shadow: 0 0 15px #fff;
+    box-shadow: 0 0 10px #CE7B7B;
+    border-radius:5px;
   }
   .partienews {
-    width: 40%;
+    width: 50%;
+    padding: 3%;
   }
   .textenews {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-top: 20%;
+    margin-top: 10%;
     margin-left: 5%;
   }
   .idee {
@@ -96,13 +107,18 @@
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
   .sousnews {
-    height: 20%;
-    border-bottom: 1px solid gray;
+    height:18%;
+    border-bottom: 1px solid #F5B64C;
     padding: 5% 0%;
+    border: 2px solid #F5B64C;
+    border-radius: 10px;
+    padding: 5%;
+    margin-bottom: 5%;
+    display: flex;
   }
   .descriptionsct {
-    width: 60%;
-    color: #000000a8;
+    width: 80%;
+    color: #000000A8;
     font-weight: bold;
     font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   }
@@ -115,4 +131,55 @@
     align-items: center;
     justify-content: space-around;
   }
+.carousel-item{
   
+  height: 500px;
+}
+.ant-carousel >>> .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364D79;
+  overflow: hidden;
+}
+.ant-carousel >>> .slick-slide h3 {
+  color: #fff;
+}
+.item{
+  height:100%;
+  width: 100%;
+  display: flex;
+  /* flex-direction: row; */
+  /* border:1px solid #000; */
+}
+.imageslide{
+  height:100%;
+  width: 50%;
+  
+}
+.imageslide img{
+  width: 100%;
+}
+.item h3{
+  width:100px;
+  margin-top: 10%;
+  text-align:center;
+  font-size: 25px;
+  font-weight: bold;
+  font-family: 'Times New Roman', Times, serif;
+  text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+   
+.item h3 span{
+  color: #F17887;
+}
+.row{
+  height:auto;
+}
+.img-responsive{
+  height: 300px;
+  width:500px;
+}
+.item.active{
+  margin:0% 20%;
+}
